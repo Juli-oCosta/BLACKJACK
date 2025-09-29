@@ -1,21 +1,27 @@
 import random
 
 def create_deck():
-  naipes = ['Copas', 'Ouros', 'Paus', 'Espadas']
+  suits = ['Copas', 'Ouros', 'Paus', 'Espadas']
   ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-  baralho = []
+  
+  deck = []
 
-  for naipe in naipes:
+  for suit in suits:
     for rank in ranks:
-      baralho.append(f"{rank} de {naipe}")
+      if rank == 'A':
+          value = 11  # The Ace beggins as 11. A future function will adjust it as needed.
+      elif rank in ['J', 'K', 'Q']:
+          value = 10
+      else:
+          value = int(rank)
+      
+      card = {
+          'rank': rank,
+          'suit': suit,
+          'value': value
+      }
+      deck.append(card)
 
-  random.shuffle(baralho)
+  random.shuffle(deck)
 
-  return baralho
-
-def deal_card(deck):
-  return False
-
-meu_baralho = create_deck()
-print(meu_baralho)
-print(f"Total de cartas: {len(meu_baralho)}")
+  return deck
