@@ -1,8 +1,7 @@
 import random
 
-
 def create_deck():
-  suits = ['Copas', 'Ouros', 'Paus', 'Espadas']
+  suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
   ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
 
   deck = []
@@ -23,10 +22,12 @@ def create_deck():
 
   return deck
 
+
 #
 def deal_card(deck):
   card = deck.pop()
   return card
+
 
 #
 def calculate_hand(hand):
@@ -40,15 +41,30 @@ def calculate_hand(hand):
     if card['rank'] == 'A':
       ace_count += 1
     
-    while total > 21 and ace_count > 0:
-      total -= 10
-      ace_count -= 1
+  while total > 21 and ace_count > 0:
+    total -= 10
+    ace_count -= 1
 
   return total
+
 
 #
 def player_turn(deck, player_hand):
   while True:
+    player_score = calculate_hand(player_hand)
+
+    hand_text_list = []
+    for card in player_hand:
+        hand_text_list.append(f"{card['rank']} de {card['suit']}")
+
+    print(f"Your hand: {', '.join(hand_text_list)}")
+    print(f"Your Score: {player_score}")
+
+    if player_score > 21:
+        print("You busted!!")
+        print(f"Final score: {player_score}")
+        break
+
     player_choice = input("\nWhat do you want to do? \n1 - Hit\n2 - Stand\nChoice: ")
 
     if player_choice == '1':
@@ -60,20 +76,9 @@ def player_turn(deck, player_hand):
     else:
       print("Enter a valid option.")
 
-
-
-
-
-
-
-
 game_deck = create_deck()
-print(f"Deck's starting size: {len(game_deck)}")
 
 card_1 = deal_card(game_deck)
 card_2 = deal_card(game_deck)
 
 player_hand = [card_1, card_2]
-print(f"Player's starting hand: {player_hand}")
-
-print(f"Deck cards: {len(game_deck)} un.")
