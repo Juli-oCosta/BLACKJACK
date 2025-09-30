@@ -1,5 +1,6 @@
 import random
 
+
 def create_deck():
   suits = ['Copas', 'Ouros', 'Paus', 'Espadas']
   ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
@@ -22,13 +23,30 @@ def create_deck():
 
   return deck
 
+#
 def deal_card(deck):
   card = deck.pop()
   return card
 
-def calculate_hand():
-  return False
+#
+def calculate_hand(hand):
+  total = 0
+  ace_count = 0
 
+  for card in hand:
+    total += card['value']
+
+  for card in hand:
+    if card['rank'] == 'A':
+      ace_count += 1
+    
+    while total > 21 and ace_count > 0:
+      total -= 10
+      ace_count -= 1
+
+  return total
+
+#
 def player_turn(deck, player_hand):
   while True:
     player_choice = input("\nWhat do you want to do? \n1 - Hit\n2 - Stand\nChoice: ")
