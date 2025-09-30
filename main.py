@@ -26,6 +26,29 @@ def deal_card(deck):
   card = deck.pop()
   return card
 
+def calculate_hand():
+  return False
+
+def player_turn(deck, player_hand):
+  while True:
+    player_choice = input("\nWhat do you want to do? \n1 - Hit\n2 - Stand\nChoice: ")
+
+    if player_choice == '1':
+      new_card = deal_card(deck)
+      player_hand.append(new_card)
+    elif player_choice == '2':
+      print("\nYou chose to stand.")
+      break
+    else:
+      print("Enter a valid option.")
+
+
+
+
+
+
+
+
 game_deck = create_deck()
 print(f"Deck's starting size: {len(game_deck)}")
 
