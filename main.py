@@ -55,7 +55,7 @@ def player_turn(deck, player_hand):
 
     hand_text_list = []
     for card in player_hand:
-        hand_text_list.append(f"{card['rank']} de {card['suit']}")
+        hand_text_list.append(f"{card['rank']} of {card['suit']}")
 
     print(f"Your hand: {', '.join(hand_text_list)}")
     print(f"Your Score: {player_score}")
