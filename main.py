@@ -22,12 +22,10 @@ def create_deck():
 
   return deck
 
-
 #
 def deal_card(deck):
   card = deck.pop()
   return card
-
 
 #
 def calculate_hand(hand):
@@ -47,7 +45,6 @@ def calculate_hand(hand):
 
   return total
 
-
 #
 def player_turn(deck, player_hand):
   while True:
@@ -61,9 +58,7 @@ def player_turn(deck, player_hand):
     print(f"Your Score: {player_score}")
 
     if player_score > 21:
-        print("You busted!!")
-        print(f"Final score: {player_score}")
-        break
+      break
 
     player_choice = input("\nWhat do you want to do? \n1 - Hit\n2 - Stand\nChoice: ")
 
@@ -76,9 +71,30 @@ def player_turn(deck, player_hand):
     else:
       print("Enter a valid option.")
 
-game_deck = create_deck()
+#
+def dealer_turn(deck, dealer_hand):
+  print("--Dealer's turn--")
+  
+#
+def play_game():
+  game_deck = create_deck()
 
-card_1 = deal_card(game_deck)
-card_2 = deal_card(game_deck)
+  player_hand = []
+  dealer_hand = []
 
-player_hand = [card_1, card_2]
+  for _ in range(2):
+    player_hand.append(deal_card(game_deck))
+    dealer_hand.append(deal_card(game_deck))
+
+  print(f"Dealer shows: {dealer_hand[0]['rank']} of {dealer_hand[0]['suit']}")
+
+  player_turn(game_deck, player_hand)
+  player_score = calculate_hand(player_hand)
+
+  if player_score > 21:
+    print("\nYou busted!!")
+    print(f"Final score: {player_score}")
+  else:
+    dealer_hand = dealer_turn(game_deck, dealer_hand)
+
+play_game()
