@@ -80,7 +80,7 @@ def player_turn(deck, player_hand):
 def dealer_turn(deck, dealer_hand):
   print("--Dealer's turn--")
 
-  # 1. Revealing
+  # 1. When the turn begins
   # Dealer's turn beggins only when:
     # The player chose "Stand";
     # Player's score hasn't busted 21.
