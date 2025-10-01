@@ -26,7 +26,7 @@ def create_deck():
 
 #
 def deal_card(deck):
-  card = deck.pop() # Taking the last card fo the shuffled deck
+  card = deck.pop() # Taking the last card from the shuffled deck
   return card
 
 
