@@ -80,6 +80,22 @@ def player_turn(deck, player_hand):
 def dealer_turn(deck, dealer_hand):
   print("--Dealer's turn--")
 
+  # 1. Revealing
+  # Dealer's turn beggins only when:
+    # The player chose "Stand";
+    # Player's score hasn't busted 21.
+  # If the player busted, the dealer automaticaly wins.
+
+  # 2. fixed rule
+  # Dealer's first action is to show his hole card;
+  # With his hand shown, the dealer start's to play, following a needed and unique rule;
+  # if dealer's total score is below 16, he's obligated to "Hit";
+  # if dealer's total score is below 17 or more, he's obligated to "Stand";
+  #He keeps taking cards, one by one, until his score reaches 17 or more, he cannot choose to stop with 15 as an example.
+
+  # 3. End of turn
+  # First cenery: The dealer stops as soon as he hits a score between 17 and 21, his turn ends with this final score;
+  # Second cenery: The dealer busts. If when getting a new card, his score surpasses 21, causing his loss.
 
 #
 def play_game():
