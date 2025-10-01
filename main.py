@@ -6,6 +6,7 @@ def create_deck():
 
   deck = []
 
+  # Calculating each card's value
   for suit in suits:
     for rank in ranks:
       if rank == 'A':
@@ -22,10 +23,12 @@ def create_deck():
 
   return deck
 
+
 #
 def deal_card(deck):
-  card = deck.pop()
+  card = deck.pop() # Taking the last card fo the shuffled deck
   return card
+
 
 #
 def calculate_hand(hand):
@@ -38,12 +41,13 @@ def calculate_hand(hand):
   for card in hand:
     if card['rank'] == 'A':
       ace_count += 1
-    
+
   while total > 21 and ace_count > 0:
     total -= 10
     ace_count -= 1
 
   return total
+
 
 #
 def player_turn(deck, player_hand):
@@ -71,10 +75,12 @@ def player_turn(deck, player_hand):
     else:
       print("Enter a valid option.")
 
+
 #
 def dealer_turn(deck, dealer_hand):
   print("--Dealer's turn--")
-  
+
+
 #
 def play_game():
   game_deck = create_deck()
