@@ -10,7 +10,7 @@ def create_deck():
   for suit in suits:
     for rank in ranks:
       if rank == 'A':
-          value = 11  # The Ace beggins as 11. A future function will adjust it as needed.
+          value = 11 # The Ace beggins as 11. If needed, it's adjusted in calculate_hand().
       elif rank in ['J', 'K', 'Q']:
           value = 10
       else:
