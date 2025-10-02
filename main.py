@@ -1,4 +1,5 @@
 import random
+import time
 
 def create_deck():
   suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
