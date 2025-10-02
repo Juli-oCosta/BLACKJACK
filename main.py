@@ -71,6 +71,7 @@ def player_turn(deck, player_hand):
     display_hand("Player", player_hand)
 
     if player_score > 21:
+      print("\nYou busted!!")
       break
 
     player_choice = input("\nWhat do you want to do? \n1 - Hit\n2 - Stand\nChoice: ")
@@ -113,8 +114,16 @@ def dealer_turn(deck, dealer_hand):
 
 
 #
-def calculate_winner():
-  return 0
+def calculate_winner(player_score, dealer_score):
+
+  if player_score == dealer_score:
+    final_message = "\n--It's a draw--"
+  elif dealer_score <= 21 and dealer_score > player_score:
+    final_message = "\n--Dealer wins--"
+  else:
+    final_message = "--Test--"
+
+  print(final_message)
 
 #
 def play_game():
@@ -132,11 +141,15 @@ def play_game():
   player_turn(game_deck, player_hand)
   player_score = calculate_hand(player_hand)
 
+  dealer_score = calculate_hand(dealer_hand)
+
   if player_score > 21:
     print("\nYou busted!!")
     print(f"Final score: {player_score}")
     print("--Dealer Wins--")
   else:
     dealer_hand = dealer_turn(game_deck, dealer_hand)
+
+  calculate_winner(player_score, dealer_score)
 
 play_game()
