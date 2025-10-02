@@ -50,16 +50,24 @@ def calculate_hand(hand):
 
 
 #
+def display_hand(person_name, hand):
+    score = calculate_hand(hand)
+    hand_text_list = []
+    for card in hand:
+        hand_text_list.append(f"{card['rank']} of {card['suit']}")
+    
+    print(f"\n--- {person_name}'s Hand ---")
+    print(f"Hand: {', '.join(hand_text_list)}")
+    print(f"Score: {score}")
+    print("--------------------")
+
+
+#
 def player_turn(deck, player_hand):
   while True:
     player_score = calculate_hand(player_hand)
 
-    hand_text_list = []
-    for card in player_hand:
-        hand_text_list.append(f"{card['rank']} of {card['suit']}")
-
-    print(f"Your hand: {', '.join(hand_text_list)}")
-    print(f"Your Score: {player_score}")
+    display_hand("Player", player_hand)
 
     if player_score > 21:
       break
@@ -80,22 +88,32 @@ def player_turn(deck, player_hand):
 def dealer_turn(deck, dealer_hand):
   print("--Dealer's turn--")
 
-  # 1. When the turn begins
-  # Dealer's turn beggins only when:
-    # The player chose "Stand";
-    # Player's score hasn't busted 21.
-  # If the player busted, the dealer automaticaly wins.
+  dealer_score = calculate_hand(dealer_hand)
+  
+  display_hand("Dealer", dealer_hand)
 
-  # 2. fixed rule
-  # Dealer's first action is to show his hole card;
-  # With his hand shown, the dealer start's to play, following a needed and unique rule;
-  # if dealer's total score is below 16, he's obligated to "Hit";
-  # if dealer's total score is below 17 or more, he's obligated to "Stand";
-  #He keeps taking cards, one by one, until his score reaches 17 or more, he cannot choose to stop with 15 as an example.
+  while calculate_hand(dealer_hand) < 17:
+    print("\nDealer's score is less than 17. Dealer hits.")
+    
+    new_card = deal_card(deck)
+    dealer_hand.append(new_card)
 
-  # 3. End of turn
-  # First cenery: The dealer stops as soon as he hits a score between 17 and 21, his turn ends with this final score;
-  # Second cenery: The dealer busts. If when getting a new card, his score surpasses 21, causing his loss.
+    print("Dealer draws a new card...")
+
+    display_hand("Dealer", dealer_hand)
+  
+  final_score = calculate_hand(dealer_hand)
+  print(f"\nDealer's final hand score: {final_score}")
+
+  if final_score > 21:
+    print("Dealer busted!")
+
+  return dealer_hand 
+
+
+#
+def calculate_winner():
+  return 0
 
 #
 def play_game():
@@ -116,6 +134,7 @@ def play_game():
   if player_score > 21:
     print("\nYou busted!!")
     print(f"Final score: {player_score}")
+    print("--Dealer Wins--")
   else:
     dealer_hand = dealer_turn(game_deck, dealer_hand)
 
