@@ -4,7 +4,6 @@ import time
 def create_deck():
   suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
   ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-
   deck = []
 
   # Calculating each card's value
@@ -21,7 +20,6 @@ def create_deck():
       deck.append(card)
 
   random.shuffle(deck)
-
   return deck
 
 
@@ -67,14 +65,12 @@ def display_hand(person_name, hand):
 def player_turn(deck, player_hand):
   while True:
     player_score = calculate_hand(player_hand)
-
     display_hand("Player", player_hand)
 
     if player_score > 21:
       break
 
     player_choice = input("\nWhat do you want to do? \n1 - Hit\n2 - Stand\nChoice: ")
-
     if player_choice == '1':
       new_card = deal_card(deck)
       player_hand.append(new_card)
@@ -90,17 +86,14 @@ def dealer_turn(deck, dealer_hand):
   print("--Dealer's turn--")
 
   dealer_score = calculate_hand(dealer_hand)
-
   display_hand("Dealer", dealer_hand)
 
   while calculate_hand(dealer_hand) < 17:
     print("\nDealer's score is less than 17. Dealer hits.")
-
     new_card = deal_card(deck)
     dealer_hand.append(new_card)
 
     print("Dealer draws a new card...")
-
     display_hand("Dealer", dealer_hand)
 
   final_score = calculate_hand(dealer_hand)
