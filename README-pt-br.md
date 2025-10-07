@@ -1,3 +1,8 @@
+[Leia isto em Inglês / Read this in English](README.md)
+
+# 🃏 Jogo de Blackjack (Vinte e Um) em Python
+... (resto do conteúdo em português)
+
 # 🃏 Jogo de Blackjack (Vinte e Um) em Python
 
 Este projeto é uma implementação completa do clássico jogo de cartas Blackjack (Vinte e Um), desenvolvido em Python puro. O jogo roda inteiramente no terminal e foi criado com foco em código limpo, modularização e na aplicação correta das regras do jogo.
