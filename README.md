@@ -18,7 +18,7 @@ This project is a complete implementation of the classic card game Blackjack (21
 2.  **Download:** Download or clone this repository.
 3.  **Execution:** Navigate to the project folder in your terminal and run the following command:
     ```bash
-    python filename.py
+    python main.py
     ```
 4.  **Play:** Follow the on-screen prompts to play the game.
 
