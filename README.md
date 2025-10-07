@@ -1,3 +1,8 @@
+[Read this in Portuguese / Leia isto em Português](README-pt-br.md)
+
+# 🃏 Blackjack (21) Game in Python
+... (resto do conteúdo em inglês)
+
 # 🃏 Blackjack (21) Game in Python
 
 This project is a complete implementation of the classic card game Blackjack (21), developed in pure Python. The game runs entirely in the command line and was built with a focus on clean code, modularity, and the correct application of the game's rules.
