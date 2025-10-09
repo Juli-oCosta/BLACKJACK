@@ -1,5 +1,14 @@
 import random
+import os
 import time
+
+def clear_screen():
+    # For Windows
+    if os.name == 'nt':
+        _ = os.system('cls')
+    # For macOS and Linux
+    else:
+        _ = os.system('clear')
 
 def create_deck():
   suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
@@ -23,13 +32,11 @@ def create_deck():
   return deck
 
 
-#
 def deal_card(deck):
   card = deck.pop() # Taking the last card from the shuffled deck
   return card
 
 
-#
 def calculate_hand(hand):
   total = 0
   ace_count = 0
@@ -48,7 +55,6 @@ def calculate_hand(hand):
   return total
 
 
-#
 def display_hand(person_name, hand):
     score = calculate_hand(hand)
     hand_text_list = []
@@ -61,7 +67,6 @@ def display_hand(person_name, hand):
     print("--------------------")
 
 
-#
 def player_turn(deck, player_hand):
   while True:
     player_score = calculate_hand(player_hand)
@@ -81,20 +86,27 @@ def player_turn(deck, player_hand):
       print("Enter a valid option.")
 
 
-#
 def dealer_turn(deck, dealer_hand):
+  clear_screen()
   print("--Dealer's turn--")
 
   dealer_score = calculate_hand(dealer_hand)
   display_hand("Dealer", dealer_hand)
+  time.sleep(2)
 
   while calculate_hand(dealer_hand) < 17:
+
     print("\nDealer's score is less than 17. Dealer hits.")
+    time.sleep(1.5)
+
     new_card = deal_card(deck)
     dealer_hand.append(new_card)
 
+    clear_screen()
     print("Dealer draws a new card...")
     display_hand("Dealer", dealer_hand)
+
+    time.sleep(1.5) 
 
   final_score = calculate_hand(dealer_hand)
   print(f"\nDealer's final hand score: {final_score}")
@@ -105,7 +117,6 @@ def dealer_turn(deck, dealer_hand):
   return dealer_hand
 
 
-#
 def calculate_winner(player_score, dealer_score):
 
   if player_score > 21:
@@ -119,7 +130,7 @@ def calculate_winner(player_score, dealer_score):
   else:
     print(f"\n🔴 Dealer win with a score of {dealer_score} against your {player_score}!")
 
-#
+
 def play_game():
   game_deck = create_deck()
 
