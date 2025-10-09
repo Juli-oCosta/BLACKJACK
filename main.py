@@ -73,7 +73,6 @@ def player_turn(deck, player_hand):
     display_hand("Player", player_hand)
 
     if player_score > 21:
-      time.sleep(2)  
       break
 
     player_choice = input("\nWhat do you want to do? \n1 - Hit\n2 - Stand\nChoice: ")
